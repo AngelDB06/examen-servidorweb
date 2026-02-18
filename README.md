@@ -62,4 +62,10 @@ Lo único que faltaría por hacer (teniendo en cuenta que el proyecto ya esté e
 - KEY: contenido COMPLETO de la clave PEM.
 
 
-Una vez configurados los secrets lanzamos el workflow de actions y él junto con el docker compose harán el resto.
+Una vez configurados los secrets lanzamos el workflow de actions y él junto con el docker compose harán el resto. 
+
+En este caso nuestro workflow de Actions se conecta a la instancia EC2 con nuestros secrets del repositorio y copia nuestro proyecto en el home del usuario dentro de una carpeta llamada 'app'.
+
+Para desplegarlo se asegurará de que no hay ningun servidor web funcionando en ese momento para que no se pisen con el que se va a crear, y ejecuta el docker compose.
+
+El docker compose en este caso creara un contendor con una imagen nginx el cual será accesible por los puertos 80 y 443 (HTTP y HTTPS), posteriormente pasará la parte del frontend a la carpeta donde se alojará y mostrará la página web, hará lo mismo con nuestra configuracion de nginx personalizada para nuestro certificado. Y el contenedor correrá por su propia red de docker.

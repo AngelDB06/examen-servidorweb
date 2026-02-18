@@ -1,4 +1,4 @@
-# Despliegue de servidor de aplicaciones
+# Despliegue de servidor web
 
 ---
 
